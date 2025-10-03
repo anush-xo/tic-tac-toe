@@ -20,11 +20,10 @@ const winpatterns = [
 // Reset game function
 const resetgame = () => {
   turnO = true;
-  msgcontainer.classList.add("hide");
+  msgcontainer.classList.add("hide"); // hide winner message
   for (let box of allbox) {
-    box.innerHTML = "";
-    box.disabled = false;
-    box.style.backgroundColor = "white"; // optional: reset color
+    box.innerHTML = "";   // clear X/O
+    box.disabled = false; // enable all boxes
   }
 };
 
@@ -38,16 +37,13 @@ allbox.forEach((box) => {
       box.innerHTML = "X";
       turnO = true;
     }
-
     box.disabled = true;
 
-    // 💡 Add animation class
+    // Add animation class
     box.classList.add("animate-symbol");
-
-    // 💡 Remove after animation so it can work next time
     setTimeout(() => {
       box.classList.remove("animate-symbol");
-    }, 300); // matches CSS animation duration
+    }, 300); // duration same as CSS animation
 
     checkwinner();
   });
